@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <ul id ="menu">
+      <li>items-1</li>
+      <li>items-2</li>
+      <li>items-3</li>
+      <li>items-4</li>
+      <li>items-5</li>
+    </ul>
+  </div>
+  <script>
+    const menu=document.getElementById('menu');
+    // querySelector css방식
+    const firstLi=document.querySelector('#menu >li:nth-child(1)');
+    console.log(firstLi);
+    console.dir(menu.children);
+    //1. 아래 쓰니까 반복문을 써야겠다는 게 보임
+  /*    menu.children[0].style.color="pink";
+    menu.children[1].style.color="pink";
+    menu.children[2].style.color="pink";
+    menu.children[3].style.color="pink";
+    menu.children[4].style.color="pink"; */
+
+    // 1.2 반복문 조건식 작성 for()문 위아래(i--로 작성된 거)가 같은 거다
+   /*  for(let i=0;i<menu.children.length;i++){
+      menu.children[i].style.color="pink";
+    } */
+
+    // 2.2 1.2+2번으로 반복문 작성 동적으로 이벤트 작성
+/*     for(let i=0;i<menu.children.length;i++){
+      menu.children[i].style.color="pink";
+      if(i===2){
+        menu.children[i].addEventListener("click",function(){
+          menu.children[i].style.color="yellow";
+        });
+      }else{
+        menu.children[i].addEventListener("click",function(){
+          menu.children[i].style.color="cadetblue";
+        });
+      }
+    } */
+    // 2.3 true, false 첫번쨰는 true, 두번째는 false 반복
+    let swtichValue=true;
+    menu.addEventListener('click',function(){
+      if(swtichValue===true){
+        for(let i=0;i<menu.children.length;i++){
+          menu.children[i].style.color="pink";
+          // 3. 만약 다크모드로 한다면?
+          menu.style.backgroundColor="black";
+        }
+        swtichValue=false;
+      }else{
+        for(let i=0;i<menu.children.length;i++){
+          menu.children[i].style.color="cadetblue";
+          // 3. 만약 다크모드로 한다면?
+          menu.style.backgroundColor="white";
+        }
+        swtichValue=true;
+      }
+    });
+
+
+    
+    // for(let i=menu.children.length;i>0;i--){}
+    // 2. 이벤트 만드는 방법. 세 번째 클릭하면 색 변경
+    // function이 있는 이유: 네가 짜봐라. 함수선언과 같은 거 콜백 함수
+/*     menu.children[1].addEventListener("click",function(){
+      menu.children[1].style.color="cadetblue";
+    })
+    menu.children[2].addEventListener("click",function(){
+      menu.children[2].style.color="cadetblue";
+    })
+    menu.children[3].addEventListener("click",function(){
+      menu.children[3].style.color="cadetblue";
+    })
+    menu.children[4].addEventListener("click",function(){
+      menu.children[4].style.color="cadetblue";
+    })
+ */
+    
+
+
+  </script>
+</body>
+</html>
